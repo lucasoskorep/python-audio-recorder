@@ -2,7 +2,7 @@ from Recorder import Recorder
 
 
 class ButtonRecorder(object):
-    def __init__(self, filename=None):
+    def __init__(self, filename=None, key=None):
         self.filename = filename
         self.rec = Recorder(channels=2)
 

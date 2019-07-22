@@ -3,10 +3,16 @@ from pynput.keyboard import Key, Listener
 
 br = ButtonRecorder("test.wav")
 
+def on_pressed(key):
+    print('{0} pressed'.format(
+        key))
+def on_released(key):
+    print('{0} pressed'.format(
+        key))
+
 with Listener(
-        on_press=br.on_pressed(),
-        on_release=br.on_released()) as listener:
-    "Starting audio recording"
+        on_press=on_pressed,
+        on_release=on_released) as listener:
     listener.join()
 
 
