@@ -34,9 +34,6 @@ for i in range(p.get_device_count()):
 
 
 
-# device = input("Which device would you like to use?")
-#
-# print(f"device selected - {p.get_device_info_by_index(i)}")
 device = 0
 
 
