@@ -93,7 +93,7 @@ class RecordingGui:
         self.label.pack()
 
         self.name_input = Entry(master)
-
+        self.name_input.pack()
         self.audio_variable = StringVar(master)
         # self.audio_variable.set(audio_options[0])
 
@@ -164,7 +164,7 @@ class RecordingGui:
         print("starting to record audio")
         global person_name
         person_name = self.name_input.get()
-        print("Recording the audoio of" - person_name)
+        print("Recording the audoio of " + person_name)
         with Listener(on_release=on_released, on_press=on_pressed) as self.listener:
             try:
                 self.listener.join()
