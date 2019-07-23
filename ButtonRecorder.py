@@ -16,5 +16,6 @@ class ButtonRecorder(object):
 
     def on_pressed(self):
         if (self.filename != None):
+            print(self.filename)
             self.recfile = self.rec.open(self.filename, 'wb')
             self.recfile.start_recording()
