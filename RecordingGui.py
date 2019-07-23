@@ -32,10 +32,7 @@ p = pyaudio.PyAudio()
 for i in range(p.get_device_count()):
     print(p.get_device_info_by_index(i))
 
-
-
 device = 0
-
 
 def create_dir(filename):
     if not os.path.exists(os.path.dirname(filename)):
@@ -54,6 +51,7 @@ accent = None
 filename = None
 age = None
 sentence = None
+person_name = None
 df = pd.read_csv(data_filename)
 
 def on_released(key):
@@ -69,9 +67,10 @@ def on_released(key):
             "sentence": sentence,
             "age":age,
             "gender":gender,
-            "accent":accent
+            "accent":accent,
+            "name": person_name
         }, ignore_index=True)
-        print(df)
+        print(df.tail(10))
 
 def on_pressed(key):
     global active, filename
@@ -92,6 +91,8 @@ class RecordingGui:
 
         self.label = Label(master, text=INSTRUCTIONS)
         self.label.pack()
+
+        self.name_input = Entry(master)
 
         self.audio_variable = StringVar(master)
         # self.audio_variable.set(audio_options[0])
@@ -131,6 +132,9 @@ class RecordingGui:
         self.close_button = Button(master, text="Close", command=master.quit, height=HEIGHT, width=WIDTH)
         self.close_button.pack()
 
+    def enter_name(self, input_val):
+        print(input_val)
+
     def select_accent(self, selected_val):
         print(selected_val)
         global accent
@@ -158,6 +162,9 @@ class RecordingGui:
 
     def start_recording(self):
         print("starting to record audio")
+        global person_name
+        person_name = self.name_input.get()
+        print("Recording the audoio of" - person_name)
         with Listener(on_release=on_released, on_press=on_pressed) as self.listener:
             try:
                 self.listener.join()

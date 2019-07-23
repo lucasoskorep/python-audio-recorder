@@ -4,7 +4,7 @@ from Recorder import Recorder
 class ButtonRecorder(object):
     def __init__(self, filename=None, device = 0):
         self.filename = filename
-        self.rec = Recorder(channels=2, device = device)
+        self.rec = Recorder(channels=1, device = device)
 
     def set_device_index(self, index):
         self.rec.set_device(index)
